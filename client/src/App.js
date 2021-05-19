@@ -2,6 +2,40 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
+function nestComments(commentList) {
+  const commentMap = {};
+
+  // move all the comments into a map of id => comment
+  commentList.forEach(comment => commentMap[comment.id] = comment);
+
+  // iterate over the comments again and correctly nest the children
+  commentList.forEach(comment => {
+    if (comment.parentId !== null) {
+      const parent = commentMap[comment.parentId];
+      (parent.children = parent.children || []).push(comment);
+    }
+  });
+
+  // filter the list to return a list of correctly nested comments
+  return commentList.filter(comment => {
+    return comment.parentId === null;
+  });
+}
+
+function Comment({ comment }) {
+  const nestedComments = (comment.children || []).map(comment => {
+    return <Comment comment={comment} />;
+  });
+
+  return (
+    <div key={comment.id}>
+      <span>{comment.text}</span>
+      <a href={comment.author.url}>{comment.author.name}</a>
+      {nestedComments}
+    </div>
+  );
+}
+
 function App() {
 
   const [comments, setComments] = useState([
@@ -34,20 +68,11 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul>
+        {comments.map((comment) => {
+          return <Comment key={comment.id} comment={comment} />
+        })}
+      </ul>
     </div>
   );
 }
