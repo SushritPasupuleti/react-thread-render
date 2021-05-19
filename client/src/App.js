@@ -67,21 +67,24 @@ function App() {
       text: "5-4"
     },
     {
-      id: 6,
-      parentId: 3,
-      text: "6-3"
-    },
-    {
       id: 7,
       parentId: null,
       text: "7-p"
     },
+    {
+      id: 6,
+      parentId: 3,
+      text: "6-3"
+    },
+    
   ])
+
+  const [nested, setNested] = useState(nestComments(comments))
 
   return (
     <div className="App">
       <ul>
-        {comments.map((comment) => {
+        {nested.map((comment) => {
           return <Comment key={comment.id} comment={comment} />
         })}
       </ul>
