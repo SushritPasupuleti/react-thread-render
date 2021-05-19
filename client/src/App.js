@@ -26,7 +26,7 @@ function Comment({ comment }) {
   const nestedComments = (comment.children || []).map(comment => {
     return <div>
       nested
-      <Comment comment={comment} style={{ marginLeft: '10rem' }} />;
+      <Comment comment={comment} style={{ marginLeft: '10rem' }} />
       </div>
   });
 
