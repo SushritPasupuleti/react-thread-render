@@ -76,7 +76,11 @@ function App() {
       parentId: 3,
       text: "6-3"
     },
-    
+    {
+      id: 8,
+      parentId: 7,
+      text: "8-7"
+    },
   ])
 
   const [nested, setNested] = useState(nestComments(comments))
