@@ -81,6 +81,8 @@ function App() {
 
   const [nested, setNested] = useState(nestComments(comments))
 
+  console.log("Nested", nested)
+
   return (
     <div className="App">
       <ul>
