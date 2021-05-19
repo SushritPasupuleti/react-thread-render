@@ -24,7 +24,7 @@ function nestComments(commentList) {
 
 function Comment({ comment }) {
   const nestedComments = (comment.children || []).map(comment => {
-    return <div style={{ marginLeft: '10rem' }}>
+    return <div style={{ marginLeft: '1rem' }}>
       nested
       <Comment comment={comment} />
       </div>
