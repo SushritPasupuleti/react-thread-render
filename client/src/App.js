@@ -44,32 +44,37 @@ function App() {
     {
       id: 1,
       parentId: null,
-      text: "1"
+      text: "1-p"
     },
     {
       id: 2,
       parentId: 1,
-      text: "2"
+      text: "2-1"
     },
     {
       id: 3,
       parentId: 1,
-      text: "3"
+      text: "3-1"
     },
     {
       id: 4,
       parentId: 3,
-      text: "4"
+      text: "4-3"
     },
     {
       id: 5,
       parentId: 4,
-      text: "5"
+      text: "5-4"
     },
     {
       id: 6,
       parentId: 3,
-      text: "6"
+      text: "6-3"
+    },
+    {
+      id: 7,
+      parentId: null,
+      text: "7-p"
     },
   ])
 
