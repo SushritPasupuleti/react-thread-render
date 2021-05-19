@@ -27,10 +27,12 @@ function Comment({ comment }) {
     return <Comment comment={comment} />;
   });
 
+  console.log("Comments: ", nestedComments)
+
   return (
     <div key={comment.id}>
       <span>{comment.text}</span>
-      <a href={comment.author.url}>{comment.author.name}</a>
+      {/* <a href={comment.author.url}>{comment.author.name}</a> */}
       {nestedComments}
     </div>
   );
@@ -63,7 +65,12 @@ function App() {
       id: 5,
       parentId: 4,
       text: "5"
-    }
+    },
+    {
+      id: 6,
+      parentId: 3,
+      text: "6"
+    },
   ])
 
   return (
